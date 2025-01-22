@@ -54,5 +54,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.safe.args.gradle.plugin.v285)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
 }
