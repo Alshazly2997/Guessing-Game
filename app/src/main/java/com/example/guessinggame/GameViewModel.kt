@@ -9,7 +9,7 @@ class GameViewModel: ViewModel() {
     var secretWordDisplay = ""
     var correctGuesses = ""
     var incorrectGuesses = ""
-    var liveLeft = 8
+    var livesLeft = 8
 
     init {
         secretWordDisplay = deriveSecretWordDisplay()
@@ -23,24 +23,26 @@ class GameViewModel: ViewModel() {
         return display
     }
 
-    fun checkLetter(str: String) = when (correctGuesses.contains(str)){
+    fun checkLetter(str: String) = when (correctGuesses.contains(str)) {
         true -> str
         false -> "_"
     }
 
     fun makeGuess(guess: String) {
         if (guess.length == 1) {
-            correctGuesses += guess
-            secretWordDisplay = deriveSecretWordDisplay()
-        } else {
-            incorrectGuesses += "$guess "
-            liveLeft--
+            if (secretWord.contains(guess)) {
+                correctGuesses += guess
+                secretWordDisplay = deriveSecretWordDisplay()
+            } else {
+                incorrectGuesses += "$guess "
+                livesLeft --
+            }
         }
     }
 
     fun isWon() = secretWord.equals(secretWordDisplay, true)
 
-    fun isLost() = liveLeft <= 0
+    fun isLost() = livesLeft <= 0
 
     fun wonLostMessage(): String {
         var message = ""

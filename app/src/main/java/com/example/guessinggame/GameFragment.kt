@@ -45,7 +45,7 @@ class GameFragment : Fragment() {
 
     fun updateScreen(){
         binding.word.text = viewModel.secretWord
-        binding.lives.text = "You have ${viewModel.liveLeft} lives left."
+        binding.lives.text = "You have ${viewModel.livesLeft} lives left."
         binding.incorrectGuesses.text = "Incorrect guesses: ${viewModel.incorrectGuesses}"
     }
 
